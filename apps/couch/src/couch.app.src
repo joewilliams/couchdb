@@ -19,7 +19,7 @@
         couch_task_status,
         couch_view
     ]},
-    {mod, {couch_app, ["/opt/couchdb/etc/default.ini"]}},
+    {mod, {couch_app, []}},
     {applications, [kernel, stdlib]},
     {included_applications, [crypto, sasl, inets, oauth, ibrowse, mochiweb]}
 ]}.

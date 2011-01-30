@@ -18,8 +18,8 @@
 
 -export([start/2, stop/1]).
 
-start(_Type, DefaultIniFiles) ->
-    IniFiles = get_ini_files(DefaultIniFiles),
+start(_Type, _Args) ->
+    IniFiles = get_ini_files(),
     case start_apps([crypto, public_key, sasl, inets, oauth, ssl, ibrowse, mochiweb]) of
     ok ->
         couch_server_sup:start_link(IniFiles);
@@ -30,7 +30,9 @@ start(_Type, DefaultIniFiles) ->
 stop(_) ->
     ok.
 
-get_ini_files(Default) ->
+get_ini_files() ->
+    Etc = filename:join(code:root_dir(), "etc"),
+    Default = [filename:join(Etc,"default.ini"), filename:join(Etc,"local.ini")],
     case init:get_argument(couch_ini) of
     error ->
         Default;
