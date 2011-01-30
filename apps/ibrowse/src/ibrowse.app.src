@@ -1,0 +1,7 @@
+{application, ibrowse,
+        [{description, "HTTP client application"},
+         {vsn, "2.1.2"},
+         {registered, []},
+         {applications, [kernel,stdlib,sasl]},
+	 {env, []},
+	 {mod, {ibrowse_app, []}}]}.
